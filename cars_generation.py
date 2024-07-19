@@ -1,19 +1,31 @@
 from turtle import Turtle
 import random
+COLORS = ["red", "orange", "yellow", "green", "blue", "violet"]
+DIS = 5
+INCREMENT = 10
 
 
-class Car_Gen(Turtle):
+class Car_Gen:
     def __init__(self):
-        super().__init__()
-        self.new_y = random.randint(-300, 300)
-        self.new_x = 320
-        self.new_seg()
+
+        self.all_seg = []
+        self.car_speed = DIS
 
     def new_seg(self):
-        self.shape("square")
-        self.shapesize(1, 3)
-        self.penup()
-        self.goto(self.new_x, self.new_y)
+        random_chance = random.randint(1, 6)
+        if random_chance == 1:
+            car_seg = Turtle()
+            car_seg.color(random.choice(COLORS))
+            new_y = random.randint(-250, 250)
+            car_seg.shape("square")
+            car_seg.shapesize(1, 2)
+            car_seg.penup()
+            car_seg.goto(320, new_y)
+            self.all_seg.append(car_seg)
 
     def move_seg(self):
-        self.bk(20)
+        for seg in self.all_seg:
+            seg.bk(self.car_speed)
+
+    def level_up(self):
+        self.car_speed += INCREMENT

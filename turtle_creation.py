@@ -1,4 +1,6 @@
 from turtle import Turtle
+MOVE_DIS = 10
+POS = (0, -280)
 
 
 class Turtle_Creation(Turtle):
@@ -7,8 +9,11 @@ class Turtle_Creation(Turtle):
         self.shape("turtle")
         self.color("black")
         self.penup()
-        self.goto(0, -280)
+        self.goto(POS)
         self.setheading(90)
 
     def go_up(self):
-        self.fd(20)
+        self.fd(MOVE_DIS)
+
+    def refresh(self):
+        self.goto(POS)
